@@ -1,0 +1,441 @@
+[
+    {
+        "idRecetaActual": 1,
+        "idRecetaProxima": 2,
+        "CodigoProducto": "(OV-B) OVALADO B",
+        "TotalNiveles": 11,
+        "TipoMolde": "Molde A",
+        "estadoMaquina": "CICLO ACTIVO",
+        "desmoldeoBanda": "CINTA A",
+        "PesoProducto": 89.4,
+        "TiempoTranscurrido": "00:10 mm:ss",
+        "sdda_nivel_actual": 1,
+        "NGripperActual": 2,
+        "PesoActualDesmoldado": 447.0,
+        "TorreActual": 5
+    },
+    {
+        "Desmoldeo": {
+            "Nombre actual": "(OV-B) OVALADO B",
+            "PesoProducto": 14.9,
+            "TotalNiveles": 11,
+            "sdda_nivel_actual": 4,
+            "estadoMaquina": "CICLO ACTIVO",
+            "iniciado": true,
+            "PesoActualDesmoldado": 59.6,
+            "TiempoTranscurrido": "00:10 mm:ss"
+        },
+        "Encajonado": [],
+        "Palletizado": []
+    },
+    {
+        "datosGripper": {
+            "NGripperActual": 2,
+            "NGripperProximo": 3
+        },
+        "datosRobot": {
+            "posicionX": 0,
+            "posicionY": 300,
+            "posicionZ": 545
+        },
+        "datosDesmoldeo": {
+            "cicloTiempoTotal": 1,
+            "cicloTipoFin": 1,
+            "desmoldeobanda": 1
+        },
+        "datosTorre": {
+            "N_torre_actual": 5,
+            "N_torre_proxima": 6,
+            "TotalNiveles": 11
+        },
+        "datosSdda": {
+            "sdda_long_mm": 0,
+            "sdda_nivel_actual": 4,
+            "sdda_vertical_mm": 0
+        },
+        "sector_IO": {
+            "banda_desmoldeo": "CINTA A",
+            "estado_ciclo": true
+        }
+    },
+    [
+        {
+            "id_alarma": 801,
+            "estadoAlarma": true,
+            "tipoAlarma": "PULSADORES",
+            "descripcion": "Pulsador de arranque presionado",
+            "fechaRegistro": "2025-04-14 02-35-37"
+        },
+        {
+            "id_alarma": 802,
+            "estadoAlarma": true,
+            "tipoAlarma": "PULSADORES",
+            "descripcion": "",
+            "fechaRegistro": "2025-04-14 02-35-38"
+        },
+        {
+            "id_alarma": 803,
+            "estadoAlarma": true,
+            "tipoAlarma": "PULSADORES",
+            "descripcion": "",
+            "fechaRegistro": "2025-04-14 02-35-38"
+        },
+        {
+            "id_alarma": 500,
+            "estadoAlarma": true,
+            "tipoAlarma": "SERVOS",
+            "descripcion": "Servo de carro fuera de referencia",
+            "fechaRegistro": "2025-04-14 02-35-56"
+        },
+        {
+            "id_alarma": 501,
+            "estadoAlarma": true,
+            "tipoAlarma": "SERVOS",
+            "descripcion": "Servo de elevación sin respuesta",
+            "fechaRegistro": "2025-04-14 02-35-56"
+        },
+        {
+            "id_alarma": 502,
+            "estadoAlarma": true,
+            "tipoAlarma": "SERVOS",
+            "descripcion": "",
+            "fechaRegistro": "2025-04-14 02-35-57"
+        },
+        {
+            "id_alarma": 503,
+            "estadoAlarma": true,
+            "tipoAlarma": "SERVOS",
+            "descripcion": "",
+            "fechaRegistro": "2025-04-14 02-35-58"
+        },
+        {
+            "id_alarma": 305,
+            "estadoAlarma": true,
+            "tipoAlarma": "POSICIONADOR",
+            "descripcion": "",
+            "fechaRegistro": "2025-04-14 02-37-02"
+        },
+        {
+            "id_alarma": 1,
+            "estadoAlarma": true,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot buscando gripper",
+            "fechaRegistro": "2025-04-14 02-37-19"
+        },
+        {
+            "id_alarma": 200,
+            "estadoAlarma": false,
+            "tipoAlarma": "FALLA CILINDRO",
+            "descripcion": "Se detecto que el cilindro de cierre de pinza no llego a la posicion requerida. Revise el cilindro y el sensor desde el modo manual",
+            "fechaRegistro": "2025-04-14 02-34-58"
+        },
+        {
+            "id_alarma": 201,
+            "estadoAlarma": false,
+            "tipoAlarma": "FALLA CILINDRO",
+            "descripcion": "Se detecto que el cilindro A de elevacion de molde no llego a la posicion requerida. Revise el cilindro y el sensor desde el modo manual",
+            "fechaRegistro": "2025-04-14 02-34-58"
+        },
+        {
+            "id_alarma": 202,
+            "estadoAlarma": false,
+            "tipoAlarma": "FALLA CILINDRO",
+            "descripcion": "Se detecto que el cilindro B de elevacion de molde no llego a la posicion requerida. Revise el cilindro y el sensor desde el modo manual",
+            "fechaRegistro": "2025-04-14 02-34-59"
+        },
+        {
+            "id_alarma": 700,
+            "estadoAlarma": false,
+            "tipoAlarma": "CANCELACION",
+            "descripcion": "Ciclo cancelado por operador",
+            "fechaRegistro": "2025-04-14 02-35-18"
+        },
+        {
+            "id_alarma": 701,
+            "estadoAlarma": false,
+            "tipoAlarma": "CANCELACION",
+            "descripcion": "Ciclo cancelado por emergencia",
+            "fechaRegistro": "2025-04-14 02-35-19"
+        },
+        {
+            "id_alarma": 800,
+            "estadoAlarma": false,
+            "tipoAlarma": "PULSADORES",
+            "descripcion": "Pulsador de emergencia activado",
+            "fechaRegistro": "2025-04-14 02-35-36"
+        },
+        {
+            "id_alarma": 600,
+            "estadoAlarma": false,
+            "tipoAlarma": "INICIO CICLO",
+            "descripcion": "Inicio de ciclo automático",
+            "fechaRegistro": "2025-04-14 02-36-17"
+        },
+        {
+            "id_alarma": 601,
+            "estadoAlarma": false,
+            "tipoAlarma": "INICIO CICLO",
+            "descripcion": "Inicio de ciclo manual",
+            "fechaRegistro": "2025-04-14 02-36-17"
+        },
+        {
+            "id_alarma": 400,
+            "estadoAlarma": false,
+            "tipoAlarma": "GENERALES",
+            "descripcion": "Falla general del sistema. Verificar condiciones de energía y sensores",
+            "fechaRegistro": "2025-04-14 02-36-40"
+        },
+        {
+            "id_alarma": 401,
+            "estadoAlarma": false,
+            "tipoAlarma": "GENERALES",
+            "descripcion": "Reinicio inesperado del controlador principal",
+            "fechaRegistro": "2025-04-14 02-36-41"
+        },
+        {
+            "id_alarma": 300,
+            "estadoAlarma": false,
+            "tipoAlarma": "POSICIONADOR",
+            "descripcion": "Posicionador no llego a la posicion requerida. Verifique sensores y motor",
+            "fechaRegistro": "2025-04-14 02-36-59"
+        },
+        {
+            "id_alarma": 301,
+            "estadoAlarma": false,
+            "tipoAlarma": "POSICIONADOR",
+            "descripcion": "Error de seguimiento en el sistema del posicionador. Requiere recalibración",
+            "fechaRegistro": "2025-04-14 02-36-59"
+        },
+        {
+            "id_alarma": 0,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot buscando Home",
+            "fechaRegistro": "2025-04-14 02-37-19"
+        },
+        {
+            "id_alarma": 2,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot Ingresando a estacion en busca de gripper",
+            "fechaRegistro": "2025-04-14 02-37-20"
+        },
+        {
+            "id_alarma": 3,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot saliendo de estacion con nuevo gripper",
+            "fechaRegistro": "2025-04-14 02-37-20"
+        },
+        {
+            "id_alarma": 4,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot finalizo la busqueda de nuevo gripper",
+            "fechaRegistro": "2025-04-14 02-37-21"
+        },
+        {
+            "id_alarma": 5,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot posicionandose para dejar gripper",
+            "fechaRegistro": "2025-04-14 02-37-22"
+        },
+        {
+            "id_alarma": 6,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot ingresando a estacion para dejar gripper",
+            "fechaRegistro": "2025-04-14 02-37-22"
+        },
+        {
+            "id_alarma": 7,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot saliendo de estacion sin gripper",
+            "fechaRegistro": "2025-04-14 02-37-23"
+        },
+        {
+            "id_alarma": 8,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot finalizo el deja gripper",
+            "fechaRegistro": "2025-04-14 02-37-23"
+        },
+        {
+            "id_alarma": 9,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot posicionandose para cambiar gripper",
+            "fechaRegistro": "2025-04-14 02-37-24"
+        },
+        {
+            "id_alarma": 10,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot ingresando a estacion para dejar el gripper actual",
+            "fechaRegistro": "2025-04-14 02-37-24"
+        },
+        {
+            "id_alarma": 11,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot extrayendo nuevo gripper",
+            "fechaRegistro": "2025-04-14 02-37-25"
+        },
+        {
+            "id_alarma": 12,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot saliendo con nuevo gripper",
+            "fechaRegistro": "2025-04-14 02-37-25"
+        },
+        {
+            "id_alarma": 13,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot finalizo el cambio de gripper",
+            "fechaRegistro": "2025-04-14 02-37-26"
+        },
+        {
+            "id_alarma": 14,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot yendo a posicion de service 1",
+            "fechaRegistro": "2025-04-14 02-37-26"
+        },
+        {
+            "id_alarma": 15,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot yendo a posicion de service 2",
+            "fechaRegistro": "2025-04-14 02-37-27"
+        },
+        {
+            "id_alarma": 16,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot yendo a posicion de service 3",
+            "fechaRegistro": "2025-04-14 02-37-28"
+        },
+        {
+            "id_alarma": 17,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot yendo a posicion de espera",
+            "fechaRegistro": "2025-04-14 02-37-28"
+        },
+        {
+            "id_alarma": 18,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot en posicion de espera",
+            "fechaRegistro": "2025-04-14 02-37-29"
+        },
+        {
+            "id_alarma": 19,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot entrando a zona de pick",
+            "fechaRegistro": "2025-04-14 02-37-29"
+        },
+        {
+            "id_alarma": 20,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot realizando el pickeado de productos",
+            "fechaRegistro": "2025-04-14 02-37-30"
+        },
+        {
+            "id_alarma": 21,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot llego a posicion para retiro de zona de SDDA",
+            "fechaRegistro": "2025-04-14 02-37-30"
+        },
+        {
+            "id_alarma": 22,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot finalizo el pick de productos y se retiro de zona SDDA",
+            "fechaRegistro": "2025-04-14 02-37-31"
+        },
+        {
+            "id_alarma": 23,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot yendo a banda de transporte para dejar los productos",
+            "fechaRegistro": "2025-04-14 02-37-31"
+        },
+        {
+            "id_alarma": 24,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO ROBOT",
+            "descripcion": "Robot dejo los productos en la banda y se retira",
+            "fechaRegistro": "2025-04-14 02-37-32"
+        },
+        {
+            "id_alarma": 100,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "Carro de SDDA buscando posicion de HOME",
+            "fechaRegistro": "2025-04-14 02-37-37"
+        },
+        {
+            "id_alarma": 101,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "Altura de SDDA buscando posicion de HOME",
+            "fechaRegistro": "2025-04-14 02-37-38"
+        },
+        {
+            "id_alarma": 102,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "SDDA buscando nuevo nivel en velocidad rapida",
+            "fechaRegistro": "2025-04-14 02-37-39"
+        },
+        {
+            "id_alarma": 103,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "SDDA buscando nivel exacto",
+            "fechaRegistro": "2025-04-14 02-37-40"
+        },
+        {
+            "id_alarma": 104,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "SDDA nivel detectado",
+            "fechaRegistro": "2025-04-14 02-37-40"
+        },
+        {
+            "id_alarma": 105,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "SDDA buscando molde en velocidad rapida",
+            "fechaRegistro": "2025-04-14 02-37-41"
+        },
+        {
+            "id_alarma": 106,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "Carro de SDDA aproximandose a molde",
+            "fechaRegistro": "2025-04-14 02-37-42"
+        },
+        {
+            "id_alarma": 107,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "SDDA elevando y tomando moldes",
+            "fechaRegistro": "2025-04-14 02-37-43"
+        },
+        {
+            "id_alarma": 108,
+            "estadoAlarma": false,
+            "tipoAlarma": "ESTADO SDDA",
+            "descripcion": "Carro de SDDA en retroceso",
+            "fechaRegistro": "2025-04-14 02-37-44"
+        }
+    ]
+]
