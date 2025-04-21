@@ -14,7 +14,7 @@ local_ip = socket.gethostbyname(socket.gethostname())
 server = Server()
 
 # Configurar el servidor
-server.set_endpoint(f"opc.tcp://{local_ip}:4841")
+server.set_endpoint(f"opc.tcp://{local_ip}:4840")
 server.set_server_name("Servidor OPC UA - Datos Dinámicos")
 
 # Registrar un espacio de nombres para las variables
