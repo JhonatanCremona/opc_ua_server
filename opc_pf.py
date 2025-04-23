@@ -9,20 +9,16 @@ import random
 from datetime import datetime
 import time
 from concurrent.futures import ThreadPoolExecutor
-import matplotlib.pyplot as plt
 import math
+import threading 
 
-# Obtener la IP local para configurar el endpoint
 local_ip = socket.gethostbyname(socket.gethostname())
 
-# Crear una instancia del servidor OPC UA
 server = Server()
 
-# Configurar el servidor
 server.set_endpoint(f"opc.tcp://{local_ip}:4841")
 server.set_server_name("Servidor OPC UA - Datos Dinámicos")
 
-# Registrar un espacio de nombres para las variables
 uri = "http://example.org/opcua/server/"
 idx = server.register_namespace(uri)
 
@@ -74,6 +70,7 @@ variables = [
     cocina1_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina1_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina1_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
+    cocina1_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina1_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina1_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -106,6 +103,7 @@ variables = [
     cocina2_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina2_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina2_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
+    cocina2_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina2_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina2_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -138,6 +136,7 @@ variables = [
     cocina3_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina3_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina3_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
+    cocina3_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina3_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina3_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -170,6 +169,7 @@ variables = [
     enfriador1_obj.add_variable(idx, "TEMP_INGRESO", 1),
     enfriador1_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador1_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador1_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador1_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador1_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -202,6 +202,7 @@ variables = [
     enfriador2_obj.add_variable(idx, "TEMP_INGRESO", 2),
     enfriador2_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador2_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador2_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador2_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador2_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -234,6 +235,7 @@ variables = [
     enfriador3_obj.add_variable(idx, "TEMP_INGRESO", 3),
     enfriador3_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador3_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador3_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador3_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador3_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -266,6 +268,7 @@ variables = [
     enfriador4_obj.add_variable(idx, "TEMP_INGRESO", 4),
     enfriador4_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador4_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador4_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador4_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador4_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -300,6 +303,7 @@ variables = [
     cocina4_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina4_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina4_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
+    cocina4_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina4_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina4_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -332,6 +336,7 @@ variables = [
     cocina5_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina5_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina5_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
+    cocina5_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina5_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina5_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -364,7 +369,7 @@ variables = [
     cocina6_obj.add_variable(idx, "TEMP_CHILLER", 1),
     cocina6_obj.add_variable(idx, "NIVEL_AGUA", 1),
     cocina6_obj.add_variable(idx, "RECETA_PASO_ACTUAL", 1),
-    
+    cocina6_obj.add_variable(idx, "PESO_PRODUCTO", 900),
     
     cocina6_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     cocina6_obj.add_variable(idx, "CARGA_AGUA", True),
@@ -397,6 +402,7 @@ variables = [
     enfriador5_obj.add_variable(idx, "TEMP_INGRESO", 5),
     enfriador5_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador5_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador5_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador5_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador5_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -429,6 +435,7 @@ variables = [
     enfriador6_obj.add_variable(idx, "TEMP_INGRESO", 6),
     enfriador6_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador6_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador6_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador6_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador6_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -461,6 +468,7 @@ variables = [
     enfriador7_obj.add_variable(idx, "TEMP_INGRESO", 7),
     enfriador7_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador7_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador7_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador7_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador7_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -493,6 +501,7 @@ variables = [
     enfriador8_obj.add_variable(idx, "TEMP_INGRESO", 8),
     enfriador8_obj.add_variable(idx, "TEMP_CHILLER", 1),
     enfriador8_obj.add_variable(idx, "NIVEL_AGUA", 1),
+    enfriador8_obj.add_variable(idx, "PESO_PRODUCTO", 900),
 
     enfriador8_obj.add_variable(idx, "FILTRO_SUCCION_AGUA", False),
     enfriador8_obj.add_variable(idx, "CARGA_AGUA", False),
@@ -509,7 +518,7 @@ variables = [
 for var in enfriador8_obj.get_variables():  
     var.set_writable()
 
-def ciclo_coccion(equipo_object, inicio_en_minuto=0):
+def ciclo_coccion(equipo_object, inicio_en_minuto):
     maquina_nodos = equipo_object
     while True:
     # Variables de simulación
@@ -526,7 +535,6 @@ def ciclo_coccion(equipo_object, inicio_en_minuto=0):
         temperaturas_producto = []
         temperaturas_agua = []
         niveles_agua = []
-
         step = inicio_en_minuto
         while step <= 180:  # total de minutos simulados (3 horas)
             if step < 30:
@@ -535,13 +543,40 @@ def ciclo_coccion(equipo_object, inicio_en_minuto=0):
                 estado = "OPERATIVO"
             else:
                 estado = "FINALIZADO"
-                time.sleep(60)
+                time.sleep(2)
 
             for nod in maquina_nodos:
                 nombre = nod.get_browse_name().Name
 
                 if nombre == "ESTADO_EQUIPO":
                     nod.set_value(estado)
+                
+                if nombre == "PESO_PRODUCTO":
+                    nod.set_value(random.randint(850, 1050))
+
+                elif nombre == "VAPOR_VIVO":
+                    if estado == "PRE OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+                
+                elif nombre == "CARGA_AGUA":
+                    if estado == "PRE OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+
+                elif nombre == "VAPOR_SERPENTINA":
+                    vapor_serpentina = estado != "FINALIZADO"
+                    nod.set_value(vapor_serpentina)
+                
+                elif nombre == "BOMBA_CENTRIFUGA":
+                    bomba_centrifuga = estado != "FINALIZADO"
+                    nod.set_value(bomba_centrifuga)
+                
+                elif nombre == "FILTRO_SUCCION_AGUA":
+                    filtro_agua = estado == "OPERATIVO"
+                    nod.set_value(filtro_agua)
 
                 elif nombre == "TEMP_AGUA":
                     if estado == "PRE OPERATIVO":
@@ -576,25 +611,12 @@ def ciclo_coccion(equipo_object, inicio_en_minuto=0):
                     nod.set_value(round(nivel_actual, 2))
                     niveles_agua.append(round(nivel_actual, 2))
 
-                elif nombre == "VAPOR_VIVO":
-                    vapor_activo = step < 30
-                    nod.set_value(vapor_activo)
-
-                elif nombre == "VALV_SERPENTINA":
-                    ciclo_serpentina += 1
-                    if serpentina_on and ciclo_serpentina >= on_duracion:
-                        serpentina_on = False
-                        ciclo_serpentina = 0
-                        off_duracion = random.randint(15, 30)
-                    elif not serpentina_on and ciclo_serpentina >= off_duracion:
-                        serpentina_on = True
-                        ciclo_serpentina = 0
-                        on_duracion = random.randint(10, 25)
-                    nod.set_value(serpentina_on)
+                
+                
 
             minutos.append(step)
             step += 1
-            time.sleep(60)
+            time.sleep(1)
 
             if step > 180:
                 step = 0
@@ -612,63 +634,82 @@ def ciclo_coccion(equipo_object, inicio_en_minuto=0):
                 temperaturas_agua.clear()
                 niveles_agua.clear()
 
-"""
-def ciclo_coccion(equipo_object):
-    maquina_nodos = equipo_object
 
+def ciclo_enfriamiento(enfriador_obj, inicio_en_minuto):
+    maquina_nodos = enfriador_obj
     while True:
         # Variables de simulación
         nivel_actual = 1600
-        temp_producto = 5
-        temp_agua = 24
-        serpentina_on = True
-        on_duracion = random.randint(10, 25)
-        off_duracion = random.randint(15, 30)
-        ciclo_serpentina = 0
+        temp_producto = 75  # Comienza en 75°C
+        temp_agua = 24     # Comienza en 24°C
+        valvula_amoniaco = True
 
-        # Para graficar
-        minutos = []
-        temperaturas_producto = []
-        temperaturas_agua = []
-        niveles_agua = []
-
-        step = 0
-        while step <= 180:
-            if step < 30:
-                estado = "PRE CALENTAMIENTO"
-            elif step < 170:
+        step = inicio_en_minuto
+        while step <= 240:  # total de minutos simulados (3 horas)
+            if step < 120:
+                estado = "PRE OPERATIVO"
+            elif step < 230:
                 estado = "OPERATIVO"
             else:
                 estado = "FINALIZADO"
+                time.sleep(2)
 
             for nod in maquina_nodos:
                 nombre = nod.get_browse_name().Name
 
                 if nombre == "ESTADO_EQUIPO":
                     nod.set_value(estado)
+                
+                if nombre == "PESO_PRODUCTO":
+                    nod.set_value(random.randint(850, 1050))
+
+                if nombre == "CARGA_AGUA":
+                    if estado == "PRE OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+                
+                if nombre == "VALVULA_AMONIACO":
+                    if estado == "PRE OPERATIVO" or estado == "OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+                
+                if nombre == "BOMBA_CENTRIFUGA":
+                    if estado == "PRE OPERATIVO" or estado == "OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+                
+                if nombre == "FILTRO_SUCCION_AGUA":
+                    if estado == "OPERATIVO":
+                        nod.set_value(True)
+                    else:
+                        nod.set_value(False)
+                
+                if nombre == "VAPOR_VIVO_LIM":
+                    nod.set_value(False)
 
                 elif nombre == "TEMP_AGUA":
-                    if estado == "PRE CALENTAMIENTO":
-                        temp_agua = 24 + ((85 - 24) / 30) * step
+                    if estado == "PRE OPERATIVO":
+                        # Baja de 24°C a 2°C durante el pre-operativo
+                        temp_agua = max(24 - ((24 - 2) / 30) * step, 2)
                     elif estado == "OPERATIVO":
-                        base_temp = 80 + ((90 - 80) / 140) * (step - 30)
-                        temp_agua = base_temp + random.uniform(-1, 1)
+                        # Oscila entre 1°C y 5°C durante operativo
+                        temp_agua = random.uniform(1, 5)
                     nod.set_value(round(temp_agua, 2))
-                    temperaturas_agua.append(round(temp_agua, 2))
 
                 elif nombre == "TEMP_PRODUCTO":
-                    t = step - 30
-                    if estado in ["PRE CALENTAMIENTO", "OPERATIVO", "FINALIZADO"]:
-                        L = 70
-                        k = 0.09
-                        x0 = 45
-                        temp_producto = 5 + L / (1 + math.exp(-k * (t - x0)))
-                        temp_producto = min(temp_producto, 75)
+                    if estado in ["PRE OPERATIVO", "OPERATIVO"]:
+                        # Nueva curva exponencial inversa para el enfriamiento
+                        L = 70  # Rango total de temperatura (75 - 5 = 70)
+                        k = 0.03  # Factor de velocidad de enfriamiento
+                        temp_producto = 75 - (L * (1 - math.exp(-k * step)))
+                        temp_producto = max(temp_producto, 5)  # No baja de 5°C
                     nod.set_value(round(temp_producto, 2))
-                    temperaturas_producto.append(round(temp_producto, 2))
 
                 elif nombre == "NIVEL_AGUA":
-                    if estado == "PRE CALENTAMIENTO":
+                    if estado == "PRE OPERATIVO":
                         nivel_actual = random.uniform(1560, 1650)
                     elif estado == "OPERATIVO":
                         if step < 40:
@@ -678,190 +719,21 @@ def ciclo_coccion(equipo_object):
                     else:
                         nivel_actual = max(1800, nivel_actual - random.uniform(1, 3))
                     nod.set_value(round(nivel_actual, 2))
-                    niveles_agua.append(round(nivel_actual, 2))
 
-                elif nombre == "VAPOR_VIVO":
-                    vapor_activo = step < 30
-                    nod.set_value(vapor_activo)
+                elif nombre == "VALVULA_AMONIACO":
+                    valvula_amoniaco = estado != "FINALIZADO"
+                    nod.set_value(valvula_amoniaco)
 
-                elif nombre == "VALV_SERPENTINA":
-                    ciclo_serpentina += 1
-                    if serpentina_on and ciclo_serpentina >= on_duracion:
-                        serpentina_on = False
-                        ciclo_serpentina = 0
-                        off_duracion = random.randint(15, 30)
-                    elif not serpentina_on and ciclo_serpentina >= off_duracion:
-                        serpentina_on = True
-                        ciclo_serpentina = 0
-                        on_duracion = random.randint(10, 25)
-                    nod.set_value(serpentina_on)
+            print(f"[Enfriador {inicio_en_minuto}][{step}min] TEMP_PRODUCTO={temp_producto:.2f}°C | TEMP_AGUA={temp_agua:.2f}°C | NIVEL_AGUA={nivel_actual:.2f} | ESTADO={estado}")
 
-            minutos.append(step)
             step += 1
-            time.sleep(0.1)
-
-            if step > 180:
-                step = 0
-                nivel_actual = 1600
-                temp_producto = 5
-                temp_agua = 24
-                serpentina_on = True
-                on_duracion = random.randint(10, 25)
-                off_duracion = random.randint(15, 30)
-                ciclo_serpentina = 0
-
-                # 🧼 Limpiar las listas de datos para graficar (opcional)
-                minutos.clear()
-                temperaturas_producto.clear()
-                temperaturas_agua.clear()
-                niveles_agua.clear()
-
-        # 📊 GRAFICAR al final del ciclo
-        plt.figure(figsize=(12, 6))
-        plt.plot(minutos, temperaturas_producto, label="TEMP_PRODUCTO (°C)", color="orange", linewidth=2)
-        plt.plot(minutos, temperaturas_agua, label="TEMP_AGUA (°C)", color="blue", linewidth=2)
-        plt.axvline(30, color='gray', linestyle='--', label='Inicio Operativo')
-        plt.axvline(170, color='gray', linestyle='--', label='Inicio Finalizado')
-        plt.xlabel("Minutos")
-        plt.ylabel("Valores")
-        plt.title("Simulación de Cocción - TEMP_PRODUCTO / TEMP_AGUA / NIVEL_AGUA")
-        plt.legend()
-        plt.grid(True)
-        plt.tight_layout()
-        plt.show()
-
-"""
-
-
-def simular_ciclo_enfriamiento(enfriador_obj, inicio_ciclo_min):
-    inicio_simulacion = time.time()
-    #inicio_ciclo_s = inicio_ciclo_min * 60
-    #duracion_total_s = 4 * 60 * 60  # 4 horas = 14400 segundos
-    inicio_ciclo_s = 1 * inicio_ciclo_min
-    duracion_total_s = 240
-    temp_producto = 0
-
-    nivel_actual = 1600  # Inicializamos fuera del bucle
-    while True:
-        tiempo_actual_s = time.time() - inicio_simulacion
-
-        if tiempo_actual_s < inicio_ciclo_s:
             time.sleep(1)
-            continue
 
-        tiempo_en_ciclo = tiempo_actual_s - inicio_ciclo_s
-        if tiempo_en_ciclo > duracion_total_s:
-            tiempo_en_ciclo = duracion_total_s
-
-        tiempo_en_min = tiempo_en_ciclo / 60  # tiempo actual del ciclo en minutos
-
-        # Estado del equipo según el momento del ciclo
-        if tiempo_en_ciclo < 7200:
-            estado = "PRE OPERATIVO"
-        elif tiempo_en_ciclo < 14400:
-            estado = "OPERATIVO"
-        else:
-            estado = "FINALIZADO"
-
-        # TEMP_PRODUCTO: de 75°C a 7°C en 4 horas
-        
-
-        # TEMP_AGUA: baja de 25°C a 0°C linealmente
-        temp_agua = max(25 - (25 * (tiempo_en_ciclo / duracion_total_s)), 0)
-
-        # NIVEL_AGUA según estado
-        if estado == "PRE OPERATIVO":
-            nivel_actual = random.uniform(1560, 1650)
-
-        elif estado == "OPERATIVO":
-            if 120 <= tiempo_en_min < 130:
-                # Subida lineal de 1650 a 2000 en 10 minutos
-                nivel_actual = 1650 + ((tiempo_en_min - 120) / 10) * (2000 - 1650)
-            else:
-                nivel_actual = random.uniform(1900, 2000)
-
-        elif estado == "FINALIZADO":
-            nivel_actual = max(1800, nivel_actual - random.uniform(1, 3))  # Baja lentamente
-
-        # Válvula de amoníaco activa durante las primeras 2 horas
-        valvula_amoniaco = tiempo_en_ciclo < 7200
-        if estado == "OPERATIVO":
-            temp_producto = max(75 - (68 * (tiempo_en_ciclo / duracion_total_s)), 7)
-            enfriador_obj.get_child("2:TEMP_PRODUCTO").set_value(round(temp_producto, 2))
-
-        # Escritura en el servidor OPC UA
-        
-        enfriador_obj.get_child("2:TEMP_AGUA").set_value(round(temp_agua, 2))
-        enfriador_obj.get_child("2:NIVEL_AGUA").set_value(round(nivel_actual, 2))
-        enfriador_obj.get_child("2:VALVULA_AMONIACO").set_value(valvula_amoniaco)
-        enfriador_obj.get_child("2:ESTADO_EQUIPO").set_value(estado)
-
-        # DEBUG opcional
-        print(f"[{int(tiempo_en_ciclo)}s] TEMP_PRODUCTO={temp_producto:.2f}°C | TEMP_AGUA={temp_agua:.2f}°C | NIVEL_AGUA={nivel_actual:.2f} | ESTADO={estado} | AMONIACO={valvula_amoniaco}")
-
-        if tiempo_en_ciclo >= duracion_total_s:
-            break
-
-        time.sleep(1)
-
-
-
-def simular_ciclo_enfriamiento2(enfriador_obj, inicio_ciclo_min):
-    inicio_simulacion = time.time()
-    inicio_ciclo_s = inicio_ciclo_min * 60
-    duracion_total_s = 4 * 60 * 60  # 4 horas
-
-    tiempos = []
-    temp_producto_list = []
-    temp_agua_list = []
-    amoniaco_list = []
-
-    while True:
-        tiempo_actual_s = time.time() - inicio_simulacion
-
-        if tiempo_actual_s < inicio_ciclo_s:
-            time.sleep(10)
-            continue
-
-        tiempo_en_ciclo = tiempo_actual_s - inicio_ciclo_s
-        if tiempo_en_ciclo > duracion_total_s:
-            break  # termina la simulación
-
-        temp_producto = max(75 - (68 * (tiempo_en_ciclo / duracion_total_s)), 7)
-        temp_agua = max(25 - (25 * (tiempo_en_ciclo / duracion_total_s)), 0)
-        nivel_agua = 100
-        valvula_amoniaco = tiempo_en_ciclo <= 7200
-        estado = "PRE_ENFRIAMIENTO" if tiempo_en_ciclo < 7200 else "OPERATIVO"
-
-        enfriador_obj.get_child("2:TEMP_PRODUCTO").set_value(round(temp_producto, 2))
-        enfriador_obj.get_child("2:TEMP_AGUA").set_value(round(temp_agua, 2))
-        enfriador_obj.get_child("2:NIVEL_AGUA").set_value(nivel_agua)
-        enfriador_obj.get_child("2:VALVULA_AMONIACO").set_value(valvula_amoniaco)
-        enfriador_obj.get_child("2:ESTADO_EQUIPO").set_value(estado)
-
-        print(f"[{int(tiempo_en_ciclo)}s] Enfriador: TEMP_PRODUCTO={temp_producto:.2f}°C | TEMP_AGUA={temp_agua:.2f}°C | ESTADO={estado} | AMONIACO={valvula_amoniaco}")
-
-        # Registrar datos
-        tiempos.append(tiempo_en_ciclo / 60)  # en minutos
-        temp_producto_list.append(temp_producto)
-        temp_agua_list.append(temp_agua)
-        amoniaco_list.append(1 if valvula_amoniaco else 0)
-
-        time.sleep(1)
-
-    # Graficar
-    plt.figure(figsize=(10, 6))
-    plt.plot(tiempos, temp_producto_list, label="Temp Producto (°C)")
-    plt.plot(tiempos, temp_agua_list, label="Temp Agua (°C)")
-    plt.plot(tiempos, amoniaco_list, label="Válvula Amoniaco (ON=1)", linestyle='--')
-    plt.title("Simulación Enfriador")
-    plt.xlabel("Tiempo (minutos)")
-    plt.ylabel("Valores")
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-
+            if step >= 240:
+                step = 0
+                temp_producto = 75
+                temp_agua = 24
+                nivel_actual = 1600
 
 def ejecutar_ciclo(args):
     objeto, inicio_min = args
@@ -869,7 +741,7 @@ def ejecutar_ciclo(args):
 
 def ejecutar_enfriamiento(args):
     objeto, inicio_min = args
-    simular_ciclo_enfriamiento(objeto, inicio_min)
+    ciclo_enfriamiento(objeto, inicio_min)
 
 
 
@@ -878,35 +750,58 @@ if __name__ == "__main__":
         print("Servidor OPC UA iniciado en", server.endpoint)
         server.start()
 
-        # ----- Definir tareas de cocción -----
-        tareas_coccion = [
-            (cocina1_obj.get_variables(), 0),
-            (cocina2_obj.get_variables(), 60),
-            (cocina3_obj.get_variables(), 160),
-            (cocina4_obj.get_variables(), 80),
-            (cocina5_obj.get_variables(), 60)
-        ]
+        c1 = threading.Thread(target=ciclo_coccion, args=(cocina1_obj.get_variables(), 0))
+        c2 = threading.Thread(target=ciclo_coccion, args=(cocina2_obj.get_variables(), 60))
+        c3 = threading.Thread(target=ciclo_coccion, args=(cocina3_obj.get_variables(), 160))
+        c4 = threading.Thread(target=ciclo_coccion, args=(cocina4_obj.get_variables(), 80))
+        c5 = threading.Thread(target=ciclo_coccion, args=(cocina5_obj.get_variables(), 30))
 
-        # ----- Definir tareas de enfriamiento -----
-        tareas_enfriamiento = [
-            (enfriador1_obj.get_variables(), 10),
-            (enfriador2_obj.get_variables(), 10),
-            (enfriador3_obj.get_variables(), 10),
-            (enfriador4_obj.get_variables(), 10),
-            (enfriador5_obj.get_variables(), 10),
-            (enfriador6_obj.get_variables(), 10),
-            (enfriador7_obj.get_variables(), 10),
-            (enfriador8_obj.get_variables(), 10),
-        ]
+        e1 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador1_obj.get_variables(), 10))
+        e2 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador2_obj.get_variables(), 20))
+        e3 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador3_obj.get_variables(), 10))
+        e4 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador4_obj.get_variables(), 30))
+        e5 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador5_obj.get_variables(), 40))
+        e6 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador6_obj.get_variables(), 45))
+        e7 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador7_obj.get_variables(), 0))
+        e8 = threading.Thread(target=ciclo_enfriamiento, args=(enfriador8_obj.get_variables(), 5))
         
-        #simular_ciclo_enfriamiento2(enfriador1_obj, 1)
-        simular_ciclo_enfriamiento(enfriador2_obj, 2)
-        # Ejecutar todas las tareas en paralelo
-        with ThreadPoolExecutor() as executor:
-            executor.map(ejecutar_ciclo, tareas_coccion)
-            executor.map(ejecutar_enfriamiento, tareas_enfriamiento)
+        c1.start()
+        c2.start()
+        c3.start()
+        c4.start()
+        c5.start()
+
+        e1.start()
+        e2.start()
+        e3.start()
+        e4.start()
+
+        e5.start()
+        e6.start()
+        e7.start()
+        e8.start()
+
+        print(threading.enumerate)
 
     except KeyboardInterrupt:
         print("\nServidor detenido por el usuario.")
+
+        c1.join()
+        c2.join()
+        c3.join()
+        c4.join()
+        c5.join()
+
+        e1.join()
+        e2.join()
+        e3.join()
+        e4.join()
+
+        e5.join()
+        e6.join()
+        e7.join()
+        e8.join()
+        
         server.stop()
         print("Servidor detenido correctamente.")
+
