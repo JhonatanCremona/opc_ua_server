@@ -723,9 +723,6 @@ def ciclo_enfriamiento(enfriador_obj, inicio_en_minuto):
                 elif nombre == "VALVULA_AMONIACO":
                     valvula_amoniaco = estado != "FINALIZADO"
                     nod.set_value(valvula_amoniaco)
-
-            print(f"[Enfriador {inicio_en_minuto}][{step}min] TEMP_PRODUCTO={temp_producto:.2f}°C | TEMP_AGUA={temp_agua:.2f}°C | NIVEL_AGUA={nivel_actual:.2f} | ESTADO={estado}")
-
             step += 1
             time.sleep(1)
 
