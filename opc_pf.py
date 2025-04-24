@@ -58,7 +58,7 @@ cocina1_obj = server_interface_1.add_object(idx, "COCINA-1-L1")
 variables = [
     cocina1_obj.add_variable(idx, "COCINA_NUMERO", 1),
     cocina1_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina1_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon"),
+    cocina1_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 1"),
     cocina1_obj.add_variable(idx, "ESTADO_EQUIPO", "FINALIZADO"),
     cocina1_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina1_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -91,7 +91,7 @@ cocina2_obj = server_interface_1.add_object(idx, "COCINA-2-L1")
 variables = [
     cocina2_obj.add_variable(idx, "COCINA_NUMERO", 2),
     cocina2_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina2_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    cocina2_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 2"),
     cocina2_obj.add_variable(idx, "ESTADO_EQUIPO", "INACTIVO"),
     cocina2_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina2_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -124,7 +124,7 @@ cocina3_obj = server_interface_1.add_object(idx, "COCINA-3-L1")
 variables = [
     cocina3_obj.add_variable(idx, "COCINA_NUMERO", 3),
     cocina3_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina3_obj.add_variable(idx, "RECETA_NOMBRE", "Paleta"),
+    cocina3_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 3"),
     cocina3_obj.add_variable(idx, "ESTADO_EQUIPO", "FINALIZADO"),
     cocina3_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina3_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -157,7 +157,7 @@ enfriador1_obj = server_interface_1.add_object(idx, "ENFRIADOR-1-L1")
 variables = [
     enfriador1_obj.add_variable(idx, "ENFRIADOR_NUMERO", 7),
     enfriador1_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador1_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon"),
+    enfriador1_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 4"),
     enfriador1_obj.add_variable(idx, "ESTADO_EQUIPO", "FALLA"),
     enfriador1_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador1_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -190,7 +190,7 @@ enfriador2_obj = server_interface_1.add_object(idx, "ENFRIADOR-2-L1")
 variables = [
     enfriador2_obj.add_variable(idx, "ENFRIADOR_NUMERO", 8),
     enfriador2_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador2_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    enfriador2_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 5"),
     enfriador2_obj.add_variable(idx, "ESTADO_EQUIPO", "OPERATIVO"),
     enfriador2_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador2_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -223,7 +223,7 @@ enfriador3_obj = server_interface_1.add_object(idx, "ENFRIADOR-3-L1")
 variables = [
     enfriador3_obj.add_variable(idx, "ENFRIADOR_NUMERO", 9),
     enfriador3_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador3_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    enfriador3_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 6"),
     enfriador3_obj.add_variable(idx, "ESTADO_EQUIPO", "OPERATIVO"),
     enfriador3_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador3_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -256,7 +256,7 @@ enfriador4_obj = server_interface_1.add_object(idx, "ENFRIADOR-4-L1")
 variables = [
     enfriador4_obj.add_variable(idx, "ENFRIADOR_NUMERO", 10),
     enfriador4_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador4_obj.add_variable(idx, "RECETA_NOMBRE", "Paleta"),
+    enfriador4_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 7"),
     enfriador4_obj.add_variable(idx, "ESTADO_EQUIPO", "INACTIVO"),
     enfriador4_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador4_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -291,7 +291,7 @@ cocina4_obj = server_interface_2.add_object(idx, "COCINA-4-L2")
 variables = [
     cocina4_obj.add_variable(idx, "COCINA_NUMERO", 4),
     cocina4_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina4_obj.add_variable(idx, "RECETA_NOMBRE", "Paleta"),
+    cocina4_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 8"),
     cocina4_obj.add_variable(idx, "ESTADO_EQUIPO", "OPERATIVO"),
     cocina4_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina4_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -324,7 +324,7 @@ cocina5_obj = server_interface_2.add_object(idx, "COCINA-5-L2")
 variables = [
     cocina5_obj.add_variable(idx, "COCINA_NUMERO", 5),
     cocina5_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina5_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    cocina5_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 9"),
     cocina5_obj.add_variable(idx, "ESTADO_EQUIPO", "FINALIZADO"),
     cocina5_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina5_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -357,7 +357,7 @@ cocina6_obj = server_interface_2.add_object(idx, "COCINA-6-L2")
 variables = [
     cocina6_obj.add_variable(idx, "COCINA_NUMERO", 6),
     cocina6_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    cocina6_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    cocina6_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 10"),
     cocina6_obj.add_variable(idx, "ESTADO_EQUIPO", "INACTIVO"),
     cocina6_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     cocina6_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -390,7 +390,7 @@ enfriador5_obj = server_interface_2.add_object(idx, "ENFRIADOR-5-L2")
 variables = [
     enfriador5_obj.add_variable(idx, "ENFRIADOR_NUMERO", 11),
     enfriador5_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador5_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon"),
+    enfriador5_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 11"),
     enfriador5_obj.add_variable(idx, "ESTADO_EQUIPO", "OPERATIVO"),
     enfriador5_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador5_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -423,7 +423,7 @@ enfriador6_obj = server_interface_2.add_object(idx, "ENFRIADOR-6-L2")
 variables = [
     enfriador6_obj.add_variable(idx, "ENFRIADOR_NUMERO", 12),
     enfriador6_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador6_obj.add_variable(idx, "RECETA_NOMBRE", "Pate"),
+    enfriador6_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 12"),
     enfriador6_obj.add_variable(idx, "ESTADO_EQUIPO", "INACTIVO"),
     enfriador6_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador6_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -456,7 +456,7 @@ enfriador7_obj = server_interface_2.add_object(idx, "ENFRIADOR-7-L2")
 variables = [
     enfriador7_obj.add_variable(idx, "ENFRIADOR_NUMERO", 13),
     enfriador7_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador7_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon"),
+    enfriador7_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 13"),
     enfriador7_obj.add_variable(idx, "ESTADO_EQUIPO", "OPERATIVO"),
     enfriador7_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador7_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
@@ -489,7 +489,7 @@ enfriador8_obj = server_interface_2.add_object(idx, "ENFRIADOR-8-L2")
 variables = [
     enfriador8_obj.add_variable(idx, "ENFRIADOR_NUMERO", 14),
     enfriador8_obj.add_variable(idx, "RECETA_NUMERO", 1),
-    enfriador8_obj.add_variable(idx, "RECETA_NOMBRE", "Paleta"),
+    enfriador8_obj.add_variable(idx, "RECETA_NOMBRE", "Jamon Tipo 14"),
     enfriador8_obj.add_variable(idx, "ESTADO_EQUIPO", "FALLA"),
     enfriador8_obj.add_variable(idx, "CANTIDAD_TORRES", 1),
     enfriador8_obj.add_variable(idx, "CICLO_TIPO_FIN", "TIEMPO"),
