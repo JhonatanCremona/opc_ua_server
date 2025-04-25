@@ -341,7 +341,8 @@ def ciclo_de_desmoldeo():
                 # Simulación de tiempo de procesamiento
                 time.sleep(8 * 60 / 11)
                 #time.sleep(3)
-            idReceta_actual = (idReceta_actual % len(RecetaNombres)) + 1
+            #idReceta_actual = (idReceta_actual % len(RecetaNombres)) + 1
+            idReceta_actual = (idReceta_actual % len(RecetaNombres)) or len(RecetaNombres)
             print(f"\n Preparando siguiente receta: {idReceta_actual}- {RecetaNombres[idReceta_actual - 1]}")
 
             dato_ciclo = variables[0]
