@@ -589,7 +589,9 @@ def ciclo_coccion(equipo_object, inicio_en_minuto):
 
                 elif nombre == "TEMP_PRODUCTO":
                     t = step - 30
-                    if estado in ["PRE OPERATIVO", "OPERATIVO", "FINALIZADO"]:
+                    if estado in ["PRE OPERATIVO"]:
+                        temp_producto = 0
+                    if estado in ["OPERATIVO", "FINALIZADO"]:
                         L = 70
                         k = 0.09
                         x0 = 45
@@ -700,7 +702,9 @@ def ciclo_enfriamiento(enfriador_obj, inicio_en_minuto):
                     nod.set_value(round(temp_agua, 2))
 
                 elif nombre == "TEMP_PRODUCTO":
-                    if estado in ["PRE OPERATIVO", "OPERATIVO"]:
+                    if estado in ["PRE OPERATIVO"]:
+                        temp_producto = 0
+                    if estado in ["OPERATIVO"]:
                         # Nueva curva exponencial inversa para el enfriamiento
                         L = 70  # Rango total de temperatura (75 - 5 = 70)
                         k = 0.03  # Factor de velocidad de enfriamiento
